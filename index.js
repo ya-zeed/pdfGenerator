@@ -10,7 +10,9 @@ const upload = multer({ storage: storage });
 
 app.post('/pdf', upload.single('htmlFile'), async (req, res) => { // use `upload.single('htmlFile')` middleware
     try {
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+            args: ['--no-sandbox'],
+        });
         const page = await browser.newPage();
 
         // Ensure the file was uploaded
