@@ -1,0 +1,275 @@
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>&nbsp;</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            margin: 0;
+        }
+
+        .title {
+            height: 100px;
+            margin-top: 50px;
+        }
+
+        .title img {
+            background-color: #FFF;
+            height: 50px;
+        }
+
+        .container {
+            width: 70%;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative
+        }
+
+        .container:after {
+            content: '';
+            position: absolute;
+            inset: 0 0 0 0;
+            background-image: url('https://hakam.dev/logo.png');
+            background-size: 700px;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+            opacity: .05
+        }
+
+        .page-bg {
+            width: 100%;
+            height: 100vh;
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 1;
+            position: relative;
+
+        }
+
+        .page-bg:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100px;
+            width: 500px;
+            background-image: url('https://hakam.dev/top.png');
+            background-size: contain;
+            background-position: left;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+
+        .page-bg:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            height: 100px;
+            width: 500px;
+            background-image: url('https://hakam.dev/bottom.png');
+            background-size: contain;
+            background-position: right;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #22263E
+        }
+
+        .section p {
+            margin: 0 !important;
+            font-size: 16px;
+            line-height: 1;
+            color: #22263E
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: right;
+        }
+
+        th {
+            background-color: #22263E;
+            color: white;
+        }
+
+        .d-flex {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+
+    <style media="print">
+        body {
+            margin: 0;
+            background-color: #fff;
+        }
+
+        .container {
+            box-shadow: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #000;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+</head>
+<body>
+<div class="page-bg">
+    <div class="container">
+        <div class="title">
+            <img src="https://hakam.dev/logo.png" alt="">
+        </div>
+        <div class="section">
+            <h2> نبذة عن المعقد </h2>
+            <p>
+                هذا العقد يهدف إلى تنظيم العلاقة بين الجهة المانحة والجهة المنفذة لتنفيذ مشروع خيري في المملكة العربية
+                السعودية. يسعى العقد إلى تحقيق الأهداف الخيرية والإنسانية والتعاون بين الطرفين لخدمة المجتمع.
+            </p>
+            <table>
+                <tr>
+                    <th>نطاق العقد</th>
+                    <th>المخرجات</th>
+                </tr>
+                <tr>
+                    <td>النطاق هنا</td>
+                    <td>المخرجات هنا</td>
+                </tr>
+            </table>
+        </div>
+        <div class="section">
+            <h2>الميزانية</h2>
+            <p>حدد الميزانية أو الشروط المالية للعقد.</p>
+            <table>
+                <tr>
+                    <th>تاريخ بداية المشروع</th>
+                    <th>تاريخ انتهاء المشروع</th>
+                    <th>مدة المشروع</th>
+                </tr>
+                <tr>
+                    <td>01/01/2024</td>
+                    <td>01/03/2024</td>
+                    <td>60 يوم</td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="payments section">
+            <h3>المدفوعات</h3>
+            <p>يتم تقسيم المدفوعات على المدة المتفق عليها </p>
+            <table>
+                <tr>
+                    <th>الدفعة</th>
+                    <th>المبلغ</th>
+                    <th>تاريخ الدفع</th>
+                </tr>
+                <tr>
+                    <td>الدفعة 1</td>
+                    <td>$1000</td>
+                    <td>01/01/2024</td>
+                </tr>
+                <tr>
+                    <td>الدفعة 2</td>
+                    <td>$2000</td>
+                    <td>01/02/2024</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="page-break"></div>
+        <div class="section">
+            <h3>نص الاتفاق والشروط</h3>
+            <p>
+
+                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي
+                للنص أو
+                شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ
+                -إلى حد
+                ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص
+                مقروء.
+                العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص،
+                وإذا قمت
+                بإدخال "lorem ipsum" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين
+                ظهرت
+                نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة، وأحياناً عن عمد كإدخال بعض العبارات
+                الفكاهية
+                إليها.
+            </p>
+
+            <p> هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي
+                للنص أو
+                شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ
+                -إلى حد
+                ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص
+                مقروء.
+                العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص،
+                وإذا قمت
+                بإدخال "lorem ipsum" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين
+                ظهرت
+                نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة، وأحياناً عن عمد كإدخال بعض العبارات
+                الفكاهية
+                إليها.</p>
+            <p> هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي
+                للنص أو
+                شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ
+                -إلى حد
+                ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص
+                مقروء.
+                العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص،
+                وإذا قمت
+                بإدخال "lorem ipsum" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين
+                ظهرت
+                نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة، وأحياناً عن عمد كإدخال بعض العبارات
+                الفكاهية
+                إليها.</p>
+            <div class="d-flex">
+                <div>
+                    <h4>الطرف الأول</h4>
+                </div>
+                <div>
+                    <h4>الطرف الثاني</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
