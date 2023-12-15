@@ -1,15 +1,17 @@
 const express = require('express');
+const puppeteer = require('puppeteer');
+const multer = require('multer');
+const AdmZip = require('adm-zip'); // Required for ZIP file handling
+
 const app = express();
 const port = 3000;
-const puppeteer = require('puppeteer');
-const multer = require('multer'); // Import multer
 
-// Setup multer middleware to handle file uploads
-const storage = multer.memoryStorage(); // Store the file in memory
+// Setup multer middleware for file upload
+const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-let browser; // Browser instance
-let pagePool = []; // Pool of pages
+let browser;
+let pagePool = [];
 
 async function createBrowser() {
     browser = await puppeteer.launch({
@@ -32,19 +34,35 @@ async function releasePage(page) {
     pagePool.push(page);
 }
 
-app.post('/pdf', upload.single('htmlFile'), async (req, res) => { // use `upload.single('htmlFile')` middleware
+app.post('/pdf', upload.single('htmlFile'), async (req, res) => {
     try {
-        // Ensure the file was uploaded
+        // Ensure a file was uploaded
         if (!req.file || !req.file.buffer) {
             throw new Error("No file uploaded");
         }
 
-        const htmlContent = req.file.buffer.toString('utf8'); // Convert buffer to string
+        let htmlContent;
 
-        // Create a new page or reuse an existing one
+        // Check if the uploaded file is a ZIP file
+        if (req.file.mimetype === 'application/zip') {
+            const zip = new AdmZip(req.file.buffer);
+            const zipEntries = zip.getEntries();
+
+            // Find the first HTML file in the ZIP
+            const htmlEntry = zipEntries.find(entry => entry.name.endsWith('.html'));
+            if (!htmlEntry) {
+                throw new Error("No HTML file found in the ZIP");
+            }
+            htmlContent = htmlEntry.getData().toString('utf8');
+        } else if (req.file.mimetype === 'text/html' || req.file.mimetype === 'application/xhtml+xml') {
+            // Process HTML file directly
+            htmlContent = req.file.buffer.toString('utf8');
+        } else {
+            throw new Error("Unsupported file type");
+        }
+
         const page = await createPage();
 
-        // Set content of the page to the uploaded HTML
         await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
         await page.emulateMediaType('print');
 
@@ -53,13 +71,11 @@ app.post('/pdf', upload.single('htmlFile'), async (req, res) => { // use `upload
             format: 'A4',
         });
 
-        // Release the page back to the pool
         await releasePage(page);
 
         res.setHeader('Content-Type', 'application/pdf');
         res.setHeader('Content-Disposition', 'attachment; filename=result.pdf');
         res.send(pdf);
-
     } catch (error) {
         console.error('Error generating PDF:', error);
         res.status(500).send('Error generating PDF');
@@ -67,6 +83,6 @@ app.post('/pdf', upload.single('htmlFile'), async (req, res) => { // use `upload
 });
 
 app.listen(port, async () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`Server listening on port ${port}`);
     await createBrowser();
 });
